@@ -118,6 +118,7 @@ module MultiJson
     begin
       adapter.load(string, options)
     rescue adapter::ParseError => exception
+      MLOG.log('fb_response_error', { string: string, error: exception })
       raise ParseError.build(exception, string)
     end
   end
